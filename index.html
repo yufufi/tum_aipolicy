@@ -21,7 +21,17 @@
         <script>
             var map = new Datamap({
                 element: document.getElementById('world_map_container'),
-                projection: 'mercator'
+                projection: 'mercator',
+                fills: {
+                    defaultFill: 'C8C8C8',
+                    countriesOfInterest: '1C5AD7'
+                },
+                data: {
+                    MEX: { fillKey: "countriesOfInterest" },
+                    JPN: { fillKey: "countriesOfInterest" },
+                    GBR: { fillKey: "countriesOfInterest" },
+                    DEU: { fillKey: "countriesOfInterest" }
+                }
             });
         </script>
     </body>
