@@ -8,7 +8,7 @@
             #world_map_container {
                 width: 100vw;
                 position: relative;
-                height: 60vw;
+                height: 56vw;
             }
         </style>
     </head>
@@ -19,7 +19,10 @@
         </div>
         <div id="world_map_container" ></div>
         <script>
-            var map = new Datamap({element: document.getElementById('world_map_container')});
+            var map = new Datamap({
+                element: document.getElementById('world_map_container'),
+                projection: 'mercator'
+            });
         </script>
     </body>
 </html>
