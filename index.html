@@ -19,20 +19,28 @@
         </div>
         <div id="world_map_container" ></div>
         <script>
+            var countryData = {
+                MEX: { fillKey: "mexico", text: "Blah blah blah" },
+                JPN: { fillKey: "japan", text: "Oh my god can you believe this?!" },
+                GBR: { fillKey: "uk", text: "God save the queen" },
+                CHN: { fillKey: "china", text: "La la la la la" }
+            };
+            var EUCountries = [ 'AUT', 'BEL', 'BGR', 'HRV', 'CYP','CZE','DNK', 'DEU', 'EST', 'FIN', 'FRA',   'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE']; 
+            EUCountries.forEach(item => {
+                countryData[item] = { fillKey: "eu", text: "Foo bar" };
+            });
             var map = new Datamap({
                 element: document.getElementById('world_map_container'),
                 projection: 'mercator',
                 fills: {
                     defaultFill: '#C8C8C8',
-                    countriesOfInterest: '#1C5AD7'
+                    eu: '#1C5AD7',
+                    mexico: '#006341',
+                    china: '#FFB200',
+                    japan: '#BE0029',
+                    uk: '#C8102E'
                 },
-                data: {
-                    MEX: { fillKey: "countriesOfInterest", text: "Blah blah blah" },
-                    JPN: { fillKey: "countriesOfInterest", text: "Oh my god can you believe this?!" },
-                    GBR: { fillKey: "countriesOfInterest", text: "God save the queen" },
-                    DEU: { fillKey: "countriesOfInterest", text: "California ueber alles" },
-                    CHN: { fillKey: "countriesOfInterest", text: "La la la la la" }
-                },
+                data: countryData,
                 geographyConfig: {
                     popupTemplate: function(geo, data) {
                         return ['<div class="hoverinfo"><strong>',
