@@ -1,9 +1,21 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
+        <!-- Required meta tgags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">-->
+
+        <!-- d3/topojson/datamaps -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
         <script src="datamaps.world.js"></script>
-        <link href="press-2.0.8.css" rel="stylesheet">
+
+        <!-- button stuff -->
+        <!--<link href="press-2.0.8.css" rel="stylesheet">-->
         <style>
             #world_map_container {
                 width: 100vw;
@@ -11,12 +23,36 @@
                 height: 70vw;
             }
         </style>
+
+        <title>AI Policies: China, Mexico, The UK, The EU</title>
     </head>
     <body>
-        <div class="row">
-            <button class="press press-red press-ghost press-round">Hi!</button>
-            <button class="press press-red press-ghost press-round">Howdy?!</button>
-        </div>
+        <!-- navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">AI Policy: A Comparative Analysis</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  -- Navigation --
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">1 - National AI Strategy</a>
+                  <a class="dropdown-item" href="#">2 - Overall Approach</a>
+                  <a class="dropdown-item" href="#">3 - Strategic Goals And targets</a>
+                  <a class="dropdown-item" href="#">4 - Role Of Government</a>
+                  <a class="dropdown-item" href="#">5 - Use Cases</a>
+                  <a class="dropdown-item" href="#">6 - Regulation: Ethics and Data Protection</a>
+                  <a class="dropdown-item" href="#">7 - Public Involvement</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- world map -->
         <div id="world_map_container" ></div>
         <script>
             var countryData = {
@@ -50,5 +86,9 @@
                 }
             });
         </script>
+        <!-- bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>-->
     </body>
 </html>
