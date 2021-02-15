@@ -18,9 +18,9 @@
         <!--<link href="press-2.0.8.css" rel="stylesheet">-->
         <style>
             #world_map_container {
-                width: 100vw;
-                position: relative;
-                height: 70vw;
+                --wdth: 75vw;
+                width: var(--wdth);
+                height: calc(var(--wdth) / 16 * 9);
             }
         </style>
 
@@ -85,6 +85,7 @@
                     }
                 }
             });
+            
         </script>
         <!-- bootstrap -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
