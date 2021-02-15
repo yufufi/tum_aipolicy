@@ -63,7 +63,36 @@
         <!-- world map -->
         <div id="world_map_container" ></div>
         <div id="summary_container"><!--Summary goes here --></div>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <!-- bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+        <!-- markdown to html -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+        <!-- custom -->
         <script>
+            // all should go in document.ready 
+            $(document).ready(function() {
+                console.log($.ajax);
+                $('.dropdown-menu a').click(function(){
+                    var index = $(this).index() + 1;
+
+                    var converter = new showdown.Converter();
+
+                    $.ajax({
+                        url: "content/" + index + ".md",
+                        dataType: "text",
+                        success: function (data) {
+                            htmlData = converter.makeHtml(data);
+                            $("#summary_container").html(htmlData);
+                        }
+                    });
+                });
+            });
+
             var countryData = {
                 MEX: { fillKey: "mexico", text: "Blah blah blah" },
                 JPN: { fillKey: "japan", text: "Oh my god can you believe this?!" },
@@ -100,8 +129,5 @@
             });
             
         </script>
-        <!-- bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </body>
 </html>
