@@ -18,9 +18,14 @@
             :root {
                 --wdth: 50vw;
             }
-            #world_map_container {
+            #map_container_container {
                 width: var(--wdth);
                 height: calc(var(--wdth) / 16 * 9);
+                margin: auto;
+            }
+            #world_map_container {
+                width: 100%;
+                height: 100%;
                 margin: auto;
             }
 
@@ -42,10 +47,10 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  -- Navigation --
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-sections" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  -- Sections --
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" id="dropdown-menu-sections" aria-labelledby="navbarDropdownMenuLink-sections">
                   <a class="dropdown-item" href="#">1 - National AI Strategy</a>
                   <a class="dropdown-item" href="#">2 - Overall Approach</a>
                   <a class="dropdown-item" href="#">3 - Strategic Goals And targets</a>
@@ -55,15 +60,16 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-countries" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   -- Countries --
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">1 - Mexico</a>
-                  <a class="dropdown-item" href="#">2 - China</a>
-                  <a class="dropdown-item" href="#">3 - Japan</a>
-                  <a class="dropdown-item" href="#">4 - The EU</a>
-                  <a class="dropdown-item" href="#">5 - The UK</a>
+                <div class="dropdown-menu" id="dropdown-menu-countries" aria-labelledby="navbarDropdownMenuLink-countries">
+                  <a class="dropdown-item" data-code="sum" href="#">Overview</a>
+                  <a class="dropdown-item" data-code="mex" href="#">Mexico</a>
+                  <a class="dropdown-item" data-code="chn" href="#">China</a>
+                  <a class="dropdown-item" data-code="jpn" href="#">Japan</a>
+                  <a class="dropdown-item" data-code="eu" href="#">The EU</a>
+                  <a class="dropdown-item" data-code="gbr" href="#">The UK</a>
                 </div>
               </li>
             </ul>
@@ -71,7 +77,9 @@
         </nav>
 
         <!-- world map -->
-        <div id="world_map_container" ></div>
+        <div id="map_container_container">
+            <div id="world_map_container" ></div>
+        </div>
         <div id="summary_container"><!--Summary goes here --></div>
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -82,79 +90,7 @@
         <!-- markdown to html -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 
-        <!-- custom -->
-        <script>
-            // all should go in document.ready 
-            $(document).ready(function() {
-                console.log($.ajax);
-                $('.dropdown-menu a').click(function(){
-
-                    // sometimes the index starts from 1
-                    var index = $(this).index() + 1;
-
-                    // store this in the dropdwon diwn
-                    $(".dropdown-menu").data("selectedItem", index);
-                    $("#navbarDropdownMenuLink").text($(this).text());
-
-                    var converter = new showdown.Converter();
-
-                    $.ajax({
-                        url: "content/" + index + ".md",
-                        dataType: "text",
-                        success: function (data) {
-                            htmlData = converter.makeHtml(data);
-                            $("#summary_container").html(htmlData);
-                        }
-                    });
-                });
-            });
-
-            var countryData = {
-                MEX: { fillKey: "mexico", code: "mex" },
-                JPN: { fillKey: "japan", code: "jpn" },
-                GBR: { fillKey: "uk", code: "gbr" },
-                CHN: { fillKey: "china", code: "chn" }
-            };
-            var EUCountries = [ 'AUT', 'BEL', 'BGR', 'HRV', 'CYP','CZE','DNK', 'DEU', 'EST', 'FIN', 'FRA',   'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE']; 
-            EUCountries.forEach(item => {
-                countryData[item] = { fillKey: "eu", code: "eu" };
-            });
-            var map = new Datamap({
-                element: document.getElementById('world_map_container'),
-                projection: 'mercator',
-                fills: {
-                    defaultFill: '#C8C8C8',
-                    eu: '#1C5AD7',
-                    mexico: '#006341',
-                    china: '#FFB200',
-                    japan: '#BE0029',
-                    uk: '#C8102E'
-                },
-                data: countryData,
-                geographyConfig: {
-                    popupTemplate: function(geo, data) {
-                        var converter = new showdown.Converter();
-
-                        var htmlData = "";
-                        $.ajax({
-                            url: "content/" + $(".dropdown-menu").data("selectedItem") + "_" + data.code + ".md",
-                            dataType: "text",
-                            success: function (data) {
-                                htmlData = converter.makeHtml(data);
-                            },
-                            async: false,
-                        });
-                        return ['<div class="hoverinfo">',
-                            htmlData,
-                            '</div>'].join('');
-                    }
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                map.resize();
-            });
-            
-        </script>
+        <!-- main.js -->
+        <script src="main.js"></script>
     </body>
 </html>
