@@ -17,11 +17,19 @@
         <!-- button stuff -->
         <!--<link href="press-2.0.8.css" rel="stylesheet">-->
         <style>
-            #world_map_container {
+            :root {
                 --wdth: 50vw;
+            }
+            #world_map_container {
                 width: var(--wdth);
                 height: calc(var(--wdth) / 16 * 9);
                 margin: auto;
+            }
+
+            #summary_container {
+                width: var(--wdth);
+                margin: auto;
+                border-style: dotted;
             }
         </style>
 
@@ -29,7 +37,7 @@
     </head>
     <body>
         <!-- navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">AI Policy: A Comparative Analysis</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,8 +61,10 @@
             </ul>
           </div>
         </nav>
+
         <!-- world map -->
         <div id="world_map_container" ></div>
+        <div id="summary_container"><!--Summary goes here --></div>
         <script>
             var countryData = {
                 MEX: { fillKey: "mexico", text: "Blah blah blah" },
