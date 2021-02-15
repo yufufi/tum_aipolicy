@@ -83,6 +83,7 @@
 
                     // store this in the dropdwon diwn
                     $(".dropdown-menu").data("selectedItem", index);
+                    $("#navbarDropdownMenuLink").text($(this).text());
 
                     var converter = new showdown.Converter();
 
