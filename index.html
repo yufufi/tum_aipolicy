@@ -18,9 +18,10 @@
         <!--<link href="press-2.0.8.css" rel="stylesheet">-->
         <style>
             #world_map_container {
-                --wdth: 75vw;
+                --wdth: 50vw;
                 width: var(--wdth);
                 height: calc(var(--wdth) / 16 * 9);
+                margin: auto;
             }
         </style>
 
@@ -84,6 +85,10 @@
                             '</strong></div>'].join('');
                     }
                 }
+            });
+
+            window.addEventListener('resize', function() {
+                map.resize();
             });
             
         </script>
