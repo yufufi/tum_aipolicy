@@ -78,7 +78,12 @@
             $(document).ready(function() {
                 console.log($.ajax);
                 $('.dropdown-menu a').click(function(){
+
+                    // sometimes the index starts from 1
                     var index = $(this).index() + 1;
+
+                    // store this in the dropdwon diwn
+                    $(".dropdown-menu").data("selectedItem", index);
 
                     var converter = new showdown.Converter();
 
@@ -94,14 +99,14 @@
             });
 
             var countryData = {
-                MEX: { fillKey: "mexico", text: "Blah blah blah" },
-                JPN: { fillKey: "japan", text: "Oh my god can you believe this?!" },
-                GBR: { fillKey: "uk", text: "God save the queen" },
-                CHN: { fillKey: "china", text: "La la la la la" }
+                MEX: { fillKey: "mexico", code: "mex" },
+                JPN: { fillKey: "japan", code: "jpn" },
+                GBR: { fillKey: "uk", code: "gbr" },
+                CHN: { fillKey: "china", code: "chn" }
             };
             var EUCountries = [ 'AUT', 'BEL', 'BGR', 'HRV', 'CYP','CZE','DNK', 'DEU', 'EST', 'FIN', 'FRA',   'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE']; 
             EUCountries.forEach(item => {
-                countryData[item] = { fillKey: "eu", text: "Foo bar" };
+                countryData[item] = { fillKey: "eu", code: "eu" };
             });
             var map = new Datamap({
                 element: document.getElementById('world_map_container'),
@@ -117,9 +122,20 @@
                 data: countryData,
                 geographyConfig: {
                     popupTemplate: function(geo, data) {
-                        return ['<div class="hoverinfo"><strong>',
-                            data.text,
-                            '</strong></div>'].join('');
+                        var converter = new showdown.Converter();
+
+                        var htmlData = "";
+                        $.ajax({
+                            url: "content/" + $(".dropdown-menu").data("selectedItem") + "_" + data.code + ".md",
+                            dataType: "text",
+                            success: function (data) {
+                                htmlData = converter.makeHtml(data);
+                            },
+                            async: false,
+                        });
+                        return ['<div class="hoverinfo">',
+                            htmlData,
+                            '</div>'].join('');
                     }
                 }
             });

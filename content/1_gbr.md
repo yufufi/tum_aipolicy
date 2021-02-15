@@ -1,0 +1,1 @@
+The Sector Deal for AI is usually referenced as the UK’s national AI strategy. It’s a joint publication by the Department for Business, Energy & Industrial Strategy and the Department for Digital, Culture, Media & Sport. High level goal is “to put the UK at the forefront of the artificial intelligence and data revolution” with main focus being “business and productivity”.

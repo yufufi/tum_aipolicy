@@ -1,0 +1,1 @@
+The role of the government is mainly seen as coordination. The government “is expected to take on an entrepreneurial role in innovation policy through cross sectoral collaborations with businesses and universities.”
