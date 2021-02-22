@@ -51,12 +51,12 @@
                   -- Sections --
                 </a>
                 <div class="dropdown-menu" id="dropdown-menu-sections" aria-labelledby="navbarDropdownMenuLink-sections">
-                  <a class="dropdown-item" href="#">1 - National AI Strategy</a>
-                  <a class="dropdown-item" href="#">2 - Overall Approach</a>
-                  <a class="dropdown-item" href="#">3 - Strategic Goals And targets</a>
-                  <a class="dropdown-item" href="#">4 - Role Of Government</a>
-                  <a class="dropdown-item" href="#">5 - Use Cases</a>
-                  <a class="dropdown-item" href="#">6 - Regulation: Ethics and Data Protection</a>
+                  <a class="dropdown-item" data-code=1 href="#">1 - National AI Strategy</a>
+                  <a class="dropdown-item" data-code=2 href="#">2 - Overall Approach</a>
+                  <a class="dropdown-item" data-code=3 href="#">3 - Strategic Goals And targets</a>
+                  <a class="dropdown-item" data-code=4 href="#">4 - Role Of Government</a>
+                  <a class="dropdown-item" data-code=5 href="#">5 - Use Cases</a>
+                  <a class="dropdown-item" data-code=6 href="#">6 - Regulation: Ethics and Data Protection</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -81,6 +81,9 @@
             <div id="world_map_container" ></div>
         </div>
         <div id="summary_container"><!--Summary goes here --></div>
+        <! -- SCRIPTS -->
+        <!-- TODO: switch to min versions -->
+
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -90,7 +93,11 @@
         <!-- markdown to html -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 
+        <!-- hasher for basic URL handling -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-signals/1.0.0/js-signals.js" integrity="sha512-XEBiMtqQxgyfLdhWIPPDwM7Slwi5inyM0L/hE+QN9VNaV0i4ZPJGDTBsRD3a7JT+viE0D9VKlOZSbgLKLYpbGA==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hasher/1.2.0/hasher.js" integrity="sha512-jU3DSZEJ3e0E9ZtUvYbYPcrUg0Jsg9KM13hBWkeQU17IZkPi6XRr8qLp3/wu4LNKLkf2OPRsHtsTXni9YEZ2ZQ==" crossorigin="anonymous"></script>
+
         <!-- main.js -->
-        <script src="main.js?t=2"></script>
+        <script src="main.js?t=3"></script>
     </body>
 </html>

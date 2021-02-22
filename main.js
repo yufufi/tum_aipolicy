@@ -1,26 +1,10 @@
-// all should go in document.ready 
 $(document).ready(function() {
     $('#dropdown-menu-sections a').click(function(){
 
-        // sometimes the index starts from 1
+        // sometimes indexes start from 1
         var index = $(this).index() + 1;
 
-        // store this in the dropdwon diwn
-        $("#dropdown-menu-sections").data("selectedItem", index);
-        $("#navbarDropdownMenuLink-sections").text($(this).text());
-        $("#navbarDropdownMenuLink-countries").text("Summary");
-
-        var converter = new showdown.Converter();
-
-        $.ajax({
-            url: "content/" + index + ".md",
-            dataType: "text",
-            success: function (data) {
-                htmlData = converter.makeHtml(data);
-                $("#summary_container").html(htmlData);
-            }
-        });
-
+        selectSection(index);
     });
 
     $('#dropdown-menu-countries a').click(function(){
@@ -28,6 +12,31 @@ $(document).ready(function() {
         selectCountry(countryCode);
     });
 });
+
+function selectSection(index) {
+    // store this in the dropdwon diwn
+    $("#dropdown-menu-sections").data("selectedItem", index);
+
+    // get the section text
+    // update the dropdown
+    var sectionName = $('.dropdown-item[data-code=' + index + ']').text();
+    $("#navbarDropdownMenuLink-sections").text(sectionName);
+
+    // set country to "Summary"
+    $("#navbarDropdownMenuLink-countries").text("Summary");
+
+    var converter = new showdown.Converter();
+
+    return $.ajax({
+        url: "content/" + index + ".md",
+        dataType: "text",
+        success: function (data) {
+            htmlData = converter.makeHtml(data);
+            $("#summary_container").html(htmlData);
+            hasher.setHash(index.toString() + '/sum'); // TODO: make this 'sum' string const of some kind
+        }
+    });
+}
 
 function selectCountry(countryCode) {
     var selectedSection = $("#dropdown-menu-sections").data("selectedItem");
@@ -47,29 +56,36 @@ function selectCountry(countryCode) {
     }
 
     var htmlData = "";
-    $.ajax({
+    return $.ajax({
         url: url,
         dataType: "text",
         success: function (data) {
             htmlData = converter.makeHtml(data);
             $("#summary_container").html(htmlData);
+            hasher.setHash(selectedSection + '/' + countryCode); // TODO: make this 'sum' string const of some kind
+            // update the dropdown
+            var countryText = $('.dropdown-item[data-code=' + countryCode + ']').text();
+            $("#navbarDropdownMenuLink-countries").text(countryText);
+
+            var newCountryData = {};
+
+            // create new color data based on selection
+            for (const [key, value] of Object.entries(countryData)) {
+                newCountryData[key] = {};
+                newCountryData[key]['code'] = value.code;
+                newCountryData[key]['fillKey'] = (countryCode == 'sum') ? value.fillKey : (value.code == countryCode) ? value.fillKey : value.fillKey + '_notselected';
+            }
+            map.updateChoropleth(newCountryData, { duration : 0 });
         }
     });
+}
 
-    // update the dropdown
-    var countryText = $('.dropdown-item[data-code=' + countryCode + ']').text();
-    $("#navbarDropdownMenuLink-countries").text(countryText);
-
-    var newCountryData = {};
-
-    // create new color data based on selection
-    for (const [key, value] of Object.entries(countryData)) {
-        newCountryData[key] = {};
-        newCountryData[key]['code'] = value.code;
-        newCountryData[key]['fillKey'] = (countryCode == 'sum') ? value.fillKey : (value.code == countryCode) ? value.fillKey : value.fillKey + '_notselected';
+function handleChanges(newHash, oldHash) {
+    // This function lives debugging purposes only. Leave him be.
+    [section, country] = newHash.split('/');
+    if (section == undefined || country == undefined) {
+         return;
     }
-    map.updateChoropleth(newCountryData, { duration : 0 });
-
 }
 
 var countryData = {
@@ -82,8 +98,6 @@ var EUCountries = [ 'AUT', 'BEL', 'BGR', 'HRV', 'CYP','CZE','DNK', 'DEU', 'EST',
 EUCountries.forEach(item => {
     countryData[item] = { fillKey: "eu", code: "eu" };
 });
-
-
 
 var opacity = 0.3;
 var map = new Datamap({
@@ -128,7 +142,19 @@ var map = new Datamap({
     }
 });
 
-// Reise the map when the window resizes
+hasher.changed.add(handleChanges);
+hasher.initialized.add(handleChanges);
+hasher.init();
+
+var initialHash = hasher.getHash();
+[initialSection, initialCountry] = initialHash.split('/');
+if (section != undefined && country != undefined) {
+    selectSection(initialSection).done(function (data, textStatus, jqXHR) {
+        selectCountry(initialCountry);
+    });
+}
+
+// Resize the map when the window resizes
 $(window).on('resize', function() {
    map.resize();
 });
