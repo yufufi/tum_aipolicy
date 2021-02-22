@@ -382,6 +382,9 @@
                    case "CHL":
                        originXY = self.latLngToXY(-33.448890, -70.669265);
                        break;
+                   case "HRV":
+                       originXY = self.latLngToXY(45.815011, 15.981919);
+                       break;
                    case "IDN":
                        originXY = self.latLngToXY(-6.208763, 106.845599);
                        break;
@@ -409,11 +412,14 @@
 
             if (typeof datum.destination === 'string') {
               switch (datum.destination) {
-                     case "CAN":
+                    case "CAN":
                         destXY = self.latLngToXY(56.624472, -114.665293);
                         break;
                     case "CHL":
                         destXY = self.latLngToXY(-33.448890, -70.669265);
+                        break;
+                    case "HRV":
+                        destXY = self.latLngToXY(45.815011, 15.981919);
                         break;
                     case "IDN":
                         destXY = self.latLngToXY(-6.208763, 106.845599);
@@ -496,6 +502,9 @@
     this.svg.selectAll(".datamaps-subunit")
       .attr("data-foo", function(d) {
         var center = self.path.centroid(d);
+        if ( d.properties.iso === 'USA' ) {
+            center = self.projection([-98.58333, 39.83333])
+        }
         var xOffset = 7.5, yOffset = 5;
 
         if ( ["FL", "KY", "MI"].indexOf(d.id) > -1 ) xOffset = -2.5;
@@ -12582,7 +12591,7 @@
         }
         svg
           .selectAll('.' + subunit)
-          .transition()
+          .transition().duration(('duration' in options) ? options.duration : 250)
             .style('fill', color);
       }
     }

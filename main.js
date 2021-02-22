@@ -68,8 +68,7 @@ function selectCountry(countryCode) {
         newCountryData[key]['code'] = value.code;
         newCountryData[key]['fillKey'] = (countryCode == 'sum') ? value.fillKey : (value.code == countryCode) ? value.fillKey : value.fillKey + '_notselected';
     }
-
-    map.updateChoropleth(newCountryData);
+    map.updateChoropleth(newCountryData, { duration : 0 });
 
 }
 
@@ -99,8 +98,10 @@ var map = new Datamap({
 
         // https://stackoverflow.com/questions/36326683/d3-js-how-can-i-set-the-cursor-to-hand-when-mouseover-these-elements-on-svg-co
         datamap.svg.selectAll('.datamaps-subunit').on('mouseover', function(geography) {
-            d3.select(this).style("cursor", "pointer");
-            // TODO: limit to countries that are clickable
+            var countryList = Object.keys(countryData); //TODO: do we have to do this every time?!
+            if (countryList.includes(geography.id)) {
+                d3.select(this).style("cursor", "pointer");
+            }
         });
 
         datamap.svg.selectAll('.datamaps-subunit').on('mouseout', function(geography) {
