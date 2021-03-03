@@ -11,3 +11,4 @@ for f in *.md
 end
 
 pandoc -f markdown $file -o report.pdf --citeproc --toc --pdf-engine xelatex
+rm report.out
