@@ -1,4 +1,4 @@
-set file master.out
+set file report.out
 
 rm $file
 
@@ -10,4 +10,4 @@ for f in *.md
     echo "" >> $file
 end
 
-pandoc -f markdown $file -o master.pdf --citeproc --toc --pdf-engine xelatex
+pandoc -f markdown $file -o report.pdf --citeproc --toc --pdf-engine xelatex
