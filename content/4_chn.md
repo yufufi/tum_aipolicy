@@ -1,4 +1,4 @@
-# China
+## China
 
 The role of the government in steering China'sAI strategy can be said to reflect its contemporary economy model, mixing both central planning features driven by the state and market-based features driven by the private sector.
 

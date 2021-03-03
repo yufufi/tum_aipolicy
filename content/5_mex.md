@@ -1,4 +1,4 @@
-# Mexico
+## Mexico
 
 There are various examples of where AI is currently being used in Mexico to improve public services and to make citizen's lives better, however, most of the AI Use Cases in Mexico are led and implemented by the private sector rather than by the government.
 

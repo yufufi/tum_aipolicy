@@ -1,4 +1,4 @@
-# Mexico
+## Mexico
 
 Mexico decided to set the foundations of AI through three concrete actions: first, analyzing the country's readiness for AI; second, launching its first AI Strategy in 2018; and third, consolidating the AI multi-sector ecosystem.
 

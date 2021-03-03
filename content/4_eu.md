@@ -1,4 +1,4 @@
-# European Union
+## European Union
 
 Europe sets out to strike a balance between regulation and the free market, focused on strategic investments and regulation. The European Commission has increased its annual investments in AI by 70% under the research and innovation programme Horizon 2020 in order to:
 

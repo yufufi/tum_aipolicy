@@ -1,4 +1,4 @@
-# European Union
+## European Union
 
 In Europe there are different areas in which AI will have a significant impact. The European Commission sees the application cases in three general areas:
 

@@ -1,4 +1,4 @@
-# China
+## China
 
 China's "New Generation of Artificial Intelligence Development Plan"[^34] (AIDP) outlined a three-phase plan in AI development, each step with its strategic goals and timeframe. The first step: make sure China's overall AI technology is in line with its advanced competitors by 2020. This goal is further elaborated in concrete targets, such as making key progress in areas including large-scale data intelligence, autonomous intelligence systems and core devices, and being an early standard-setter on the global AI stage by building AI ethics norms, policies and regulations of some areas. The scale of China's AI core industry should be worth more than 150 billion yuan.
 

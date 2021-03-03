@@ -1,4 +1,4 @@
-# European Union
+## European Union
 
 As previously stated Europe's approach is two-folded with a focus on regulation and investment. While there are few concrete goals the overall goals are the following:
 

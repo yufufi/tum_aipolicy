@@ -1,4 +1,4 @@
-# United Kingdom
+## United Kingdom
 
 The UK government has published "a guide to using artificial intelligence in the public sector" is meant to be a guideline for AI based projects. It covers everything from evaluating AI as a potential tool for some project to management/maintenance and ethics. The Ethics section is a summary of the Alan Turing Institute's guidance.
 

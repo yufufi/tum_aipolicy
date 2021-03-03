@@ -1,0 +1,12 @@
+---
+title: AI Policy - A Comparative Analysis
+bibliography: bibliography.bib
+csl: chicago-note-bibliography-16th-edition.csl
+author:
+  - "Carolina Rieder"
+  - "Ka Man Ng"
+  - "Simeon Kechagias"
+  - "Yusuf Furkan Fidan"
+nocite: |
+  @*
+---

@@ -1,4 +1,4 @@
-# China
+## China
 
 China's "New Generation of Artificial Intelligence Development Plan"[^55] (AIDP) outlined specific targets for China to become a world leader in setting ethical norms and standards for AI.
 

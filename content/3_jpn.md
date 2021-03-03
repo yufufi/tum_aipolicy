@@ -1,4 +1,4 @@
-# Japan
+## Japan
 
 Japan outlines four strategic goals that reflect its integrated view of connecting AI development and the social mechanisms that play an enabling role.[^36]
 

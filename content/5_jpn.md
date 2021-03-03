@@ -1,4 +1,4 @@
-# Japan
+## Japan
 
 In Japan's 2019 AI Strategy, hopeful use cases were identified from priority areas such as healthcare, agriculture, disaster resilience and transportation. While some remain as work in progress and are closely linked to development in robotics (e.g. developing fire-fighting robots in special disasters), the following are two AI use cases for public welfare that have already been announced or implemented (since Japan released its first AI strategy in 2017):
 

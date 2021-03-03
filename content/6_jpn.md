@@ -1,4 +1,4 @@
-# Japan
+## Japan
 
 The current efforts by Japan's government in building a regulatory and governance system for AI can be described in three aspects: ethics principles, specific AI and data guidelines, and data protection regulations.
 

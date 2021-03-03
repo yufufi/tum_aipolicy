@@ -1,4 +1,4 @@
-# Mexico
+## Mexico
 
 What is mentioned in regards to Data & Ethics in the Mexican AI Strategy are mere recommendations on what the Government/The "Office of AI" should do in regard to these topics rather than real commitments.
 

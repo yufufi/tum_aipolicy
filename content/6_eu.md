@@ -1,4 +1,4 @@
-# The European Union
+## The European Union
 
 The European Union's efforts to regulate Artificial Intelligence are set around a collaboration between streamlining research efforts, fostering collaboration between Member states and increasing investment into AI development and deployment. At the same time the EU is developing a regulatory framework to determine which requirements relevant actors will have to fulfill, especially looking at high-risk applications.
 

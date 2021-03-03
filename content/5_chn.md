@@ -1,4 +1,4 @@
-# China
+## China
 A prominent government-led AI use case that influences resource allocation for the Chinese public would be certain areas of AI utilization in China's Social Credit System.
 
 China's Social Credit System (SCS) can be broadly understood as an ecosystem of digital scoring systems that classify behavior into morally "praise-" and "blameworthy"[^47]. Instead of one centralised scoring platform, there are currently multiple social credit systems across national, provincial, municipal, and ministerial levels, covering areas from judicial to financial and commercial credit rating and with varying degrees of public-private sector collaboration. While a clear unified structure is yet to be observed, the systems share core components:
