@@ -3,7 +3,6 @@ $(document).ready(function() {
 
         // sometimes indexes start from 1
         var index = $(this).index() + 1;
-
         selectSection(index);
     });
 
@@ -11,41 +10,69 @@ $(document).ready(function() {
         var countryCode = $(this).data("code")
         selectCountry(countryCode);
     });
+
+    $('#home-link').click(function(){
+        selectSection(0);
+    });
 });
 
 function selectSection(index) {
-    // store this in the dropdwon diwn
-    $("#dropdown-menu-sections").data("selectedItem", index);
 
-    // get the section text
-    // update the dropdown
-    var sectionName = $('.dropdown-item[data-code=' + index + ']').text();
-    $("#navbarDropdownMenuLink-sections").text(sectionName);
+    if (index != 0) {
+        // store this in the dropdwon diwn
+        $("#dropdown-menu-sections").data("selectedItem", index);
 
-    // set country to "Summary"
-    $("#navbarDropdownMenuLink-countries").text("Summary");
+        // get the section text
+        // update the dropdown
+        var sectionName = $('.dropdown-item[data-code=' + index + ']').text();
+        $("#navbarDropdownMenuLink-sections").text(sectionName);
 
-    var converter = new showdown.Converter();
+        // set country to "Summary"
+        $("#navbarDropdownMenuLink-countries").text("Summary");
+    }
+    else {
+        // unselect the section
+        $("#dropdown-menu-sections").data("selectedItem", 0);
 
+        // set section to unselected
+        $("#navbarDropdownMenuLink-sections").text("-- Sections --");
+
+        // set country to unselected
+        $("#navbarDropdownMenuLink-countries").text("-- Countries --");
+    }
+
+    var md = window.markdownit().use(markdownitFootnote)
     return $.ajax({
         url: "content/" + index + ".md",
         dataType: "text",
         success: function (data) {
-            htmlData = converter.makeHtml(data);
+            htmlData = md.render(data);
             $("#summary_container").html(htmlData);
             hasher.setHash(index.toString() + '/sum'); // TODO: make this 'sum' string const of some kind
+
+
+            var newCountryData = {};
+            var countryCode = 'sum';
+
+            // create new color data based on selection
+            for (const [key, value] of Object.entries(countryData)) {
+                newCountryData[key] = {};
+                newCountryData[key]['code'] = value.code;
+                newCountryData[key]['fillKey'] = value.fillKey;
+            }
+            map.updateChoropleth(newCountryData, { duration : 0 });
         }
     });
 }
 
 function selectCountry(countryCode) {
     var selectedSection = $("#dropdown-menu-sections").data("selectedItem");
-    if (selectedSection == undefined) {
+    if (selectedSection == undefined || selectedSection == 0) {
         alert('Please select a section first!');
         return;
     }
 
-    var converter = new showdown.Converter();
+    var md = window.markdownit().use(markdownitFootnote)
 
     var url = "content/" + selectedSection;
     if (countryCode == "sum") {
@@ -60,7 +87,7 @@ function selectCountry(countryCode) {
         url: url,
         dataType: "text",
         success: function (data) {
-            htmlData = converter.makeHtml(data);
+            htmlData = md.render(data);
             $("#summary_container").html(htmlData);
             hasher.setHash(selectedSection + '/' + countryCode); // TODO: make this 'sum' string const of some kind
             // update the dropdown
@@ -149,9 +176,17 @@ hasher.init();
 var initialHash = hasher.getHash();
 [initialSection, initialCountry] = initialHash.split('/');
 if (section != undefined && country != undefined) {
-    selectSection(initialSection).done(function (data, textStatus, jqXHR) {
-        selectCountry(initialCountry);
-    });
+    if (section == 0 && country == "sum") {
+        selectSection(0);
+    }
+    else {
+        selectSection(initialSection).done(function (data, textStatus, jqXHR) {
+            selectCountry(initialCountry);
+        });
+    }
+}
+else {
+    selectSection(0);
 }
 
 // Resize the map when the window resizes
