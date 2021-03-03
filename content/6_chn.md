@@ -1,18 +1,23 @@
-A prominent government-led AI use case that influences resource allocation for the Chinese public would be certain areas of AI utilization in China’s Social Credit System.
+# China
 
-China’s Social Credit System (SCS) can be broadly understood as an ecosystem of digital scoring systems that classify behavior into morally “praise-” and “blameworthy”. Instead of one centralised scoring platform, there are currently multiple social credit systems across national, provincial, municipal, and ministerial levels, covering areas from judicial to financial and commercial credit rating and with varying degrees of public-private sector collaboration. While a clear unified structure is yet to be observed, the systems share core components: 
+China's "New Generation of Artificial Intelligence Development Plan"[^55] (AIDP) outlined specific targets for China to become a world leader in setting ethical norms and standards for AI.
 
-all legal entities, including companies, are linked to a Unified Social Credit Code
-all social credit systems involve a master database, a blacklisting system and a punishment and rewards mechanism that may intersect multiple policy areas
+The document, however, included mostly high-level direction for further research and development in a broad range of ethical and regulatory topics, such as "civil and criminal responsibility confirmation, privacy and property protection, information security utilization". It also called for setting up a traceability and accountability system, and clarification of the legalities of AI such as rights and obligations.
 
+In 2018, China's Standardization Administration, the state body developing technical standards, released a white paper on AI standards which identified three key principles: i) human interests as the ultimate purpose; ii) the principle of liability requires accountability and transparency, iii) the "consistency of rights and responsibilities" principle, which aims to balance data oversight and intellectual property protection in the commercial domain.[^56]
 
-It is critical to point out that many of the social credit systems may or may not be currently using AI. China’s AI Strategy, while emphasizing applying AI in social governance and public order, also did not explicitly mention the Social Credit System. However, while there are not sufficient public materials to precisely map out how many social credit systems across China are integrating which fields of AI technologies, an example relevant to our scope would be the use of facial recognition as one field of AI technology in maintaining public order within the framework of SCS.
+In 2019, China's Ministry of Science and Technology established the National New Generation Artificial Intelligence Governance Expert Committee, which released eight principles for AI governance: harmony and friendliness, fairness and justice, inclusiveness and sharing, respect for privacy, security and controllability, shared responsibility, open cooperation, and agile governance[^57].
 
+China's AIDP named "massive data resources" as one of its unique advantages in AI development. While most of its policy literature on AI regulations emphasize the importance of privacy, scholars have debated exactly what types of personal data are protected, considering China's historically looser data protection regulations when compared to some of the western countries. In 2018, a privacy standard called Personal Information Security Specification was released to elaborate on broad privacy rules, which were established in the 2017 Cyber Security Law[^58]. However, the Specification has been described to function more as a voluntary standard instead of a binding data protection law such as the GDPR in the EU.
 
-Using facial recognition to targeting jaywalkers within a social credit system framework
+In late 2020, a draft of a new personal data protection law was put into consultation process[^59]. Whether it may present any impact on China's AI governance remains to be observed.
 
-In 2019, the eastern Chinese city of Nanjing introduced a legislation to punish pedestrians who are captured on video jaywalking more than five times in one year. 
+[^55]: "New Generation Artificial Intelligence Development Plan", July 20, 2017, State Council, People's Republic of China.  [[http://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm]{.ul}](http://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm)
 
-Facial recognition system was put in place at multiple busy intersections in the city to identify jaywalkers. After being caught on camera, the image of the pedestrian will be matched with databases of drivers and demographic information to identify the offender. The facial recognition technology is advanced enough to accurately identify Individuals wearing helmets, sunglasses, and some masks.
- 
-Identified information about the offenders will be publicly displayed on a screen beside the road. The punishment includes a downgrade to their social credit score, which could affect other aspects of their daily lives, such as “assessments of their job applications, access to personal loans, and vehicle insurance costs”.
+[^56]: Ding, J., Triolo, P."Translation: Excerpts from China's 'White Paper on Artificial Intelligence Standardization', June 20, 2018, New America.  [[https://www.newamerica.org/cybersecurity-initiative/digichina/blog/translation-excerpts-chinas-white-paper-artificial-intelligence-standardization/]{.ul}](https://www.newamerica.org/cybersecurity-initiative/digichina/blog/translation-excerpts-chinas-white-paper-artificial-intelligence-standardization/)
+
+[^57]: "China issues principles of next generation AI governance", June 18, 2019, Xinhua.  [[http://www.xinhuanet.com/english/2019-06/18/c_138152819.htm]{.ul}](http://www.xinhuanet.com/english/2019-06/18/c_138152819.htm)
+
+[^58]: Creemers, R., Triolo, R, Webster, G, "Translation: Cybersecurity Law of the People's Republic of China (Effective June 1, 2017)", June 29, 2018, New America.  [[https://www.newamerica.org/cybersecurity-initiative/digichina/blog/translation-cybersecurity-law-peoples-republic-china/]{.ul}](https://www.newamerica.org/cybersecurity-initiative/digichina/blog/translation-cybersecurity-law-peoples-republic-china/)
+
+[^59]: "The full text of the "Personal Information Protection Law of the People's Republic of China (Draft)" announced", October 21, 2020, SECRSS, [[https://www.secrss.com/articles/26427]{.ul}](https://www.secrss.com/articles/26427)
