@@ -10,5 +10,8 @@ for f in *.md
     echo "" >> $file
 end
 
+echo "# Bibliography" >> $file
+echo "" >> $file
+
 pandoc -f markdown $file -o report.pdf --citeproc --toc --pdf-engine xelatex
 rm report.out
