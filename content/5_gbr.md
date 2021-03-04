@@ -1,4 +1,4 @@
-## The United Kingdom
+## United Kingdom
 
 List of case studies mentioned as part of the [examples](https://www.gov.uk/government/collections/a-guide-to-using-artificial-intelligence-in-the-public-sector#examples-of-artificial-intelligence-use) section of the guideline:
 
