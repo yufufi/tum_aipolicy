@@ -14,6 +14,10 @@ $(document).ready(function() {
     $('#home-link').click(function(){
         selectSection(0);
     });
+
+    $('#brand-link').click(function(){
+        selectSection(0);
+    });
 });
 
 function selectSection(index) {
@@ -26,9 +30,11 @@ function selectSection(index) {
         // update the dropdown
         var sectionName = $('.dropdown-item[data-code=' + index + ']').text();
         $("#navbarDropdownMenuLink-sections").text(sectionName);
+        $("#navbarDropdownMenuLink-sections").addClass("active");
 
         // set country to "Summary"
         $("#navbarDropdownMenuLink-countries").text("Summary");
+        $("#navbarDropdownMenuLink-countries").removeClass("active");
     }
     else {
         // unselect the section
@@ -36,9 +42,10 @@ function selectSection(index) {
 
         // set section to unselected
         $("#navbarDropdownMenuLink-sections").text("-- Sections --");
-
+        $("#navbarDropdownMenuLink-sections").removeClass("active");
         // set country to unselected
         $("#navbarDropdownMenuLink-countries").text("-- Countries --");
+        $("#navbarDropdownMenuLink-countries").removeClass("active");
     }
 
     var md = window.markdownit().use(markdownitFootnote)
@@ -93,6 +100,7 @@ function selectCountry(countryCode) {
             // update the dropdown
             var countryText = $('.dropdown-item[data-code=' + countryCode + ']').text();
             $("#navbarDropdownMenuLink-countries").text(countryText);
+            $("#navbarDropdownMenuLink-countries").addClass("active");
 
             var newCountryData = {};
 
@@ -112,6 +120,12 @@ function handleChanges(newHash, oldHash) {
     [section, country] = newHash.split('/');
     if (section == undefined || country == undefined) {
          return;
+    }
+
+    if (section == 0 && country == 'sum'){
+        $('#home-link').addClass('active');
+    } else {
+        $('#home-link').removeClass('active');
     }
 }
 

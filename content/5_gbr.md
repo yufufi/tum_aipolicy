@@ -1,6 +1,6 @@
 ## The United Kingdom
 
-List of case studies mentioned as part of the [[examples]{.ul}](https://www.gov.uk/government/collections/a-guide-to-using-artificial-intelligence-in-the-public-sector#examples-of-artificial-intelligence-use) section of the guideline:
+List of case studies mentioned as part of the [examples](https://www.gov.uk/government/collections/a-guide-to-using-artificial-intelligence-in-the-public-sector#examples-of-artificial-intelligence-use) section of the guideline:
 
 -   How DFID (department of international development) used satellite images to estimate populations
 -   How the Department for Transport used AI to improve MOT testing
@@ -13,8 +13,7 @@ List of case studies mentioned as part of the [[examples]{.ul}](https://www.gov.
 
 There is a brief case study report for all projects above.
 
-Case studies mentioned in the [[Sector
-deal]{.ul}](https://www.gov.uk/government/publications/artificial-intelligence-sector-deal/ai-sector-deal#executive-summary):
+Case studies mentioned in the [Sector deal](https://www.gov.uk/government/publications/artificial-intelligence-sector-deal/ai-sector-deal#executive-summary):
 
 -   STFC-IBM ideas for an intelligent future
 -   ASI -- Creating capability in tomorrow's leading scientists
