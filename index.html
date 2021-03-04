@@ -33,6 +33,13 @@
                 width: var(--wdth);
                 margin: auto;
             }
+
+            #country_pagination {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
         </style>
 
         <title>AI Policies: China, Mexico, The UK, The EU</title>
@@ -81,12 +88,20 @@
             </ul>
           </div>
         </nav>
-
         <!-- world map -->
-        <div id="map_container_container">
-            <div id="world_map_container" ></div>
+        <div id="map_container_container" style="position:relative;">
+            <div id="world_map_container"  ></div>
+            <div id="country_pagination" style="display: none;">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item" id="prevbutton" ><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item" id="nextbutton" ><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+            </div>
         </div>
-        <div id="summary_container"><!--Summary goes here --></div>
+        <div id="summary_container"><!--Summary goes here -->
+        </div>
         <! -- SCRIPTS -->
         <!-- TODO: switch to min versions -->
 

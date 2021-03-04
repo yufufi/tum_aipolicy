@@ -18,6 +18,46 @@ $(document).ready(function() {
     $('#brand-link').click(function(){
         selectSection(0);
     });
+
+    $('#nextbutton a').click(function(){
+        var nextOne = false;
+        var length = $('#dropdown-menu-countries a').length;
+        var lastOne = false;
+        $('#dropdown-menu-countries a').each(function(index) {
+            $('#prevbutton').removeClass('disabled');
+            if ($(this).data("code") == $("#dropdown-menu-countries").data("selectedItem")) {
+                nextOne = true;
+            }
+            else if (nextOne) {
+                selectCountry($(this).data("code")); 
+                lastOne = true;
+                nextOne = false;
+                return;
+            }
+            lastOne = false;
+        });
+
+        if (lastOne) {
+            $('#nextbutton').addClass('disabled');
+        }
+    });
+
+    $('#prevbutton a').click(function(){
+        var prevOne = false;
+        var count = $('#dropdown-menu-countries a').length;
+        $('#dropdown-menu-countries a').each(function(index) {
+            $('#nextbutton').removeClass('disabled');
+            if ($(this).data("code") == $("#dropdown-menu-countries").data("selectedItem")) {
+                selectCountry(prevOne);
+                if (index == 0) {
+                    $('#prevbutton').addClass('disabled');
+                }
+                return;
+            } else {
+                prevOne = $(this).data("code");
+            }
+        });
+    });
 });
 
 function selectSection(index) {
@@ -35,6 +75,11 @@ function selectSection(index) {
         // set country to "Summary"
         $("#navbarDropdownMenuLink-countries").text("Summary");
         $("#navbarDropdownMenuLink-countries").removeClass("active");
+
+        $("#country_pagination").show();
+        $("#dropdown-menu-countries").data("selectedItem", "sum");
+        $('#prevbutton').addClass('disabled');
+        $('#nextbutton').removeClass('disabled');
     }
     else {
         // unselect the section
@@ -46,6 +91,8 @@ function selectSection(index) {
         // set country to unselected
         $("#navbarDropdownMenuLink-countries").text("-- Countries --");
         $("#navbarDropdownMenuLink-countries").removeClass("active");
+
+        $("#country_pagination").hide();
     }
 
     var md = window.markdownit().use(markdownitFootnote)
@@ -89,6 +136,27 @@ function selectCountry(countryCode) {
         url = url + "_" + countryCode + ".md";
     }
 
+
+    var which = 0;
+    var length = $('#dropdown-menu-countries a').length;
+    $('#dropdown-menu-countries a').each(function(index) {
+        if ($(this).data("code") == countryCode) {
+            which = index;
+            return;
+        }
+    });
+
+    if (which == 0) {
+        $('#prevbutton').addClass('disabled');
+        $('#nextbutton').removeClass('disabled');
+    } else if (which == length - 1) {
+        $('#nextbutton').addClass('disabled');
+        $('#prevbutton').removeClass('disabled');
+    } else {
+        $('#nextbutton').removeClass('disabled');
+        $('#prevbutton').removeClass('disabled');
+    }
+
     var htmlData = "";
     return $.ajax({
         url: url,
@@ -101,6 +169,7 @@ function selectCountry(countryCode) {
             var countryText = $('.dropdown-item[data-code=' + countryCode + ']').text();
             $("#navbarDropdownMenuLink-countries").text(countryText);
             $("#navbarDropdownMenuLink-countries").addClass("active");
+            $("#dropdown-menu-countries").data("selectedItem", countryCode);
 
             var newCountryData = {};
 
