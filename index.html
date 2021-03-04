@@ -18,6 +18,11 @@
             :root {
                 --wdth: 50vw;
             }
+
+            html {
+              overflow-y: scroll;
+            }
+            
             #map_container_container {
                 width: var(--wdth);
                 height: calc(var(--wdth) / 16 * 9);
@@ -94,6 +99,7 @@
             <div id="country_pagination" style="display: none;">
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
+                    <li class="page-item" id="homebutton" ><a class="page-link" href="#">Home</a></li>
                     <li class="page-item" id="prevbutton" ><a class="page-link" href="#">Previous</a></li>
                     <li class="page-item" id="nextbutton" ><a class="page-link" href="#">Next</a></li>
                   </ul>

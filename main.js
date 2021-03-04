@@ -19,6 +19,11 @@ $(document).ready(function() {
         selectSection(0);
     });
 
+    $('#homebutton a').click(function() {
+        selectSection($("#dropdown-menu-sections").data("selectedItem"));
+        $('#homebutton').addClass('disabled');
+    });
+
     $('#nextbutton a').click(function(){
         var nextOne = false;
         var length = $('#dropdown-menu-countries a').length;
@@ -115,6 +120,7 @@ function selectSection(index) {
                 newCountryData[key]['fillKey'] = value.fillKey;
             }
             map.updateChoropleth(newCountryData, { duration : 0 });
+            $('#homebutton').addClass('disabled');
         }
     });
 }
@@ -131,11 +137,12 @@ function selectCountry(countryCode) {
     var url = "content/" + selectedSection;
     if (countryCode == "sum") {
         url = url + ".md";
+        $('#homebutton').addClass('disabled');
     }
     else {
         url = url + "_" + countryCode + ".md";
+        $('#homebutton').removeClass('disabled');
     }
-
 
     var which = 0;
     var length = $('#dropdown-menu-countries a').length;
