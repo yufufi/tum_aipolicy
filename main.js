@@ -147,8 +147,9 @@ var map = new Datamap({
     responsive: true,
     done: function(datamap) {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-            // TODO: we might receive the event for a country we do not know about
-            selectCountry(countryData[geography.id].code);
+            if (geography.id in countryData) {
+                selectCountry(countryData[geography.id].code);
+            }
         });
 
         // https://stackoverflow.com/questions/36326683/d3-js-how-can-i-set-the-cursor-to-hand-when-mouseover-these-elements-on-svg-co
