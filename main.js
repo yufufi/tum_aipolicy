@@ -121,6 +121,10 @@ function selectSection(index) {
             }
             map.updateChoropleth(newCountryData, { duration : 0 });
             $('#homebutton').addClass('disabled');
+            $('#audio_player source').attr('src', 'audio/0' + index + '.mp3');
+            $('#audio_player audio')[0].pause();
+            $('#audio_player audio')[0].load();
+            $('#audio_player').show();
         }
     });
 }
@@ -130,6 +134,13 @@ function selectCountry(countryCode) {
     if (selectedSection == undefined || selectedSection == 0) {
         alert('Please select a section first!');
         return;
+    }
+
+    if (selectedSection != 0 && countryCode == 'sum') {
+        $('#audio_player').show();
+    } else 
+    {
+        $('#audio_player').hide();
     }
 
     var md = window.markdownit().use(markdownitFootnote)

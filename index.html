@@ -45,6 +45,12 @@
                 left: 0;
             }
 
+            #audio_player {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+
         </style>
 
         <title>AI Policies: China, Mexico, The UK, The EU</title>
@@ -104,6 +110,12 @@
                     <li class="page-item" id="nextbutton" ><a class="page-link" href="#">Next</a></li>
                   </ul>
                 </nav>
+            </div>
+            <div id="audio_player">
+                <audio controls  preload="metadata" style=" width:300px;">
+                    <source src="audio/01.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
         <div id="summary_container"><!--Summary goes here -->
