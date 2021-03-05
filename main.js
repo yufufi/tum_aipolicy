@@ -124,9 +124,11 @@ function selectSection(index) {
             $('#homebutton').addClass('disabled');
 
             if (index != 0) {
-                $('#audio_player source').attr('src', 'audio/0' + index + '.mp3');
-                $('#audio_player audio')[0].pause();
-                $('#audio_player audio')[0].load();
+                if ($('#audio_player source').attr('src') != 'audio/0' + index + '.mp3'){
+                    $('#audio_player source').attr('src', 'audio/0' + index + '.mp3');
+                    $('#audio_player audio')[0].pause();
+                    $('#audio_player audio')[0].load();
+                }
                 $('#audio_player').show();
             } else {
                 $('#audio_player').hide();
