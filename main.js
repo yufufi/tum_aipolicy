@@ -119,12 +119,18 @@ function selectSection(index) {
                 newCountryData[key]['code'] = value.code;
                 newCountryData[key]['fillKey'] = value.fillKey;
             }
+
             map.updateChoropleth(newCountryData, { duration : 0 });
             $('#homebutton').addClass('disabled');
-            $('#audio_player source').attr('src', 'audio/0' + index + '.mp3');
-            $('#audio_player audio')[0].pause();
-            $('#audio_player audio')[0].load();
-            $('#audio_player').show();
+
+            if (index != 0) {
+                $('#audio_player source').attr('src', 'audio/0' + index + '.mp3');
+                $('#audio_player audio')[0].pause();
+                $('#audio_player audio')[0].load();
+                $('#audio_player').show();
+            } else {
+                $('#audio_player').hide();
+            }
         }
     });
 }
@@ -277,6 +283,7 @@ hasher.init();
 
 var initialHash = hasher.getHash();
 [initialSection, initialCountry] = initialHash.split('/');
+$('#audio_player').hide();
 if (section != undefined && country != undefined) {
     if (section == 0 && country == "sum") {
         selectSection(0);
